@@ -1,0 +1,42 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "daily",
+            "type": "shell",
+            "command": "bin/daily.py",
+            "args": [
+                "--write-file"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "start plantuml server",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "run",
+                "--rm",
+                "--name",
+                "vscode_plantuml",
+                "-d",
+                "-p",
+                "42880:8080",
+                "plantuml-local"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "stop plantuml server",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "stop",
+                "vscode_plantuml"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
